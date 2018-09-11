@@ -123,5 +123,10 @@
       }
     }
   },
-  "defaultProject": "ExampleApp"
+  "defaultProject": "ExampleApp",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
