@@ -7,6 +7,8 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { ToolboxComponent } from './toolbox/toolbox.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchboxComponent } from './searchbox/searchbox.component';
+import { CoursesComponent } from './courses/courses.component';
+import { CourseItemComponent } from './course-item/course-item.component';
 
 @NgModule({
    declarations: [
@@ -15,7 +17,9 @@ import { SearchboxComponent } from './searchbox/searchbox.component';
       BreadcrumbComponent,
       ToolboxComponent,
       FooterComponent,
-      SearchboxComponent
+      SearchboxComponent,
+      CoursesComponent,
+      CourseItemComponent
    ],
    imports: [
       BrowserModule
