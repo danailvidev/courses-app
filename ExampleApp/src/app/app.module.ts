@@ -8,8 +8,8 @@ import { ToolboxComponent } from './toolbox/toolbox.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchboxComponent } from './searchbox/searchbox.component';
 import { CoursesComponent } from './courses/courses.component';
-import { CourseItemComponent } from './course-item/course-item.component';
 import { UserComponent } from './user/user.component';
+import { CourseListingComponent } from './course-listing/course-listing.component';
 
 @NgModule({
    declarations: [
@@ -20,8 +20,8 @@ import { UserComponent } from './user/user.component';
       FooterComponent,
       SearchboxComponent,
       CoursesComponent,
-      CourseItemComponent,
-      UserComponent
+      UserComponent,
+      CourseListingComponent
    ],
    imports: [
       BrowserModule
