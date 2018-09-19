@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpModule } from "@angular/http";
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
@@ -10,6 +10,7 @@ import { SearchboxComponent } from './searchbox/searchbox.component';
 import { UserComponent } from './user/user.component';
 import { CourseListingComponent } from './course-listing/course-listing.component';
 import { CourseItemComponent } from './course-item/course-item.component';
+import { CoursesService } from './services/courses.service';
 
 @NgModule({
    declarations: [
@@ -24,9 +25,9 @@ import { CourseItemComponent } from './course-item/course-item.component';
       CourseItemComponent
    ],
    imports: [
-      BrowserModule
+       BrowserModule, HttpModule
    ],
-   providers: [],
+   providers: [CoursesService],
    bootstrap: [
       AppComponent
    ]

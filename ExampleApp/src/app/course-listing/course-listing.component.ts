@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { courses } from './../data/courses';
+import { Http } from '@angular/http';
+import { CoursesService } from './../services/courses.service';
 
 @Component({
   selector: 'app-course-listing',
@@ -8,11 +9,21 @@ import { courses } from './../data/courses';
 })
 export class CourseListingComponent implements OnInit {
 
-  constructor() { }
 
-  courses: Array<any> = courses;
+  courses: Array<any>;
+  error: string;
 
+  constructor(
+    private http: Http, 
+    private coursesService: CoursesService
+  ) { }
+   
   ngOnInit() {
+      this.coursesService.getAllCourses()
+        .subscribe(
+          data => this.courses = data,
+          error => this.error = error.statusText
+        );
   }
-
 }
+  
