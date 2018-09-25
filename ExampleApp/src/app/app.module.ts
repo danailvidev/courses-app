@@ -11,6 +11,7 @@ import { UserComponent } from './user/user.component';
 import { CourseListingComponent } from './course-listing/course-listing.component';
 import { CourseItemComponent } from './course-item/course-item.component';
 import { CoursesService } from './services/courses.service';
+import { BlueDirective } from './blue.directive';
 
 @NgModule({
    declarations: [
@@ -22,7 +23,8 @@ import { CoursesService } from './services/courses.service';
       SearchboxComponent,
       UserComponent,
       CourseListingComponent,
-      CourseItemComponent
+      CourseItemComponent,
+      BlueDirective,
    ],
    imports: [
        BrowserModule, HttpModule
