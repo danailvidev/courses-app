@@ -4,6 +4,7 @@
         "title": "Test Course Number 1",
         "creation_date": "09.17.2018",
         "duration": "155" ,
+        "toprated": true,
         "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
     },
     {
@@ -11,6 +12,7 @@
         "title": "Test Course Number 2",
         "creation_date": "09.07.2018",
         "duration": "200",
+        "toprated": false,
         "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
     },
     {
@@ -18,6 +20,7 @@
         "title": "Test Course Number 3",
         "creation_date": "08.20.2018",
         "duration": "500",
+        "toprated": true,
         "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
     },
     {
@@ -25,6 +28,7 @@
         "title": "Test Course Number 4",
         "creation_date": "9/10/2018",
         "duration": "430",
+        "toprated": false,
         "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
     }
-]  
+]   

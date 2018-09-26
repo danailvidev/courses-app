@@ -10,9 +10,14 @@
   .course-details {
     display: flex;
     justify-content: space-between;
-    p {
+    .course-time {
       span {
         margin-left: 15px;
+      }
+    }
+    span {
+      i {
+        color: #FFD700;
       }
     }
   }
@@ -26,3 +31,6 @@
     height: 30px;
   }
 }  
+.top-rated {
+  background-color: #e9ecef;
+}
