@@ -11,7 +11,9 @@ import { UserComponent } from './user/user.component';
 import { CourseListingComponent } from './course-listing/course-listing.component';
 import { CourseItemComponent } from './course-item/course-item.component';
 import { CoursesService } from './services/courses.service';
-import { BlueDirective } from './blue.directive';
+import { NewcourseDirective } from './newcourse.directive';
+import { UpcomingcourseDirective } from './upcomingcourse.directive';
+import { DurationPipe } from './duration.pipe';
 
 @NgModule({
    declarations: [
@@ -24,12 +26,17 @@ import { BlueDirective } from './blue.directive';
       UserComponent,
       CourseListingComponent,
       CourseItemComponent,
-      BlueDirective,
+      NewcourseDirective,
+      UpcomingcourseDirective,
+      DurationPipe
    ],
    imports: [
-       BrowserModule, HttpModule
+      BrowserModule,
+      HttpModule
    ],
-   providers: [CoursesService],
+   providers: [
+      CoursesService
+   ],
    bootstrap: [
       AppComponent
    ]
