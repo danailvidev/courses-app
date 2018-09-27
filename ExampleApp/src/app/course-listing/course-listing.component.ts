@@ -25,5 +25,7 @@ export class CourseListingComponent implements OnInit {
         error => this.error = error.statusText
       ); 
   }
- 
+
+  order = "creation_date";
+  ascending = false;
 }

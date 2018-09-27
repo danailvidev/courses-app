@@ -14,6 +14,8 @@ import { CoursesService } from './services/courses.service';
 import { NewcourseDirective } from './newcourse.directive';
 import { UpcomingcourseDirective } from './upcomingcourse.directive';
 import { DurationPipe } from './duration.pipe';
+import { OrderbyPipe } from './orderby.pipe';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
    declarations: [
@@ -28,7 +30,9 @@ import { DurationPipe } from './duration.pipe';
       CourseItemComponent,
       NewcourseDirective,
       UpcomingcourseDirective,
-      DurationPipe
+      DurationPipe,
+      OrderbyPipe,
+      FilterPipe
    ],
    imports: [
       BrowserModule,

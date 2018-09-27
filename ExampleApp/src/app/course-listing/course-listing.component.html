@@ -1,4 +1,5 @@
-<div *ngFor="let course of courses">
+
+<div *ngFor="let course of courses | orderby:order:ascending">
         <app-course-item [course]="course"></app-course-item>
 </div>
 
