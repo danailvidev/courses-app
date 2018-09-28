@@ -1,6 +1,5 @@
-<div [ngClass]="{'top-rated': course.toprated === true}" class="course-item">
+<div [ngClass]="{'top-rated': course.toprated === true}" appCoursedate  class="course-item">
   <div class="course-details">
-    
     <p>
       <a href="">{{course.title | uppercase}} </a> <span *ngIf="course.toprated === true"> | <i class=" fa fa-star"></i></span>
     </p>

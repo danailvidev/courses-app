@@ -1,5 +1,11 @@
+<div class="toolbox">
+<nav class="navbar navbar-light bg-light  d-flex flex-row">
+      <input class="form-control" type="text" [(ngModel)]="queryString" placeholder="Search Course">
+      <a class="btn btn-sm btn-outline-secondary" href="#">Add Course</a>
+    </nav>
+</div>
 
-<div *ngFor="let course of courses | orderby:order:ascending">
-        <app-course-item [course]="course"></app-course-item>
+<div *ngFor="let course of courses | filter: queryString : 'title' ; let i = index">
+  <app-course-item  [course]="course"></app-course-item>
 </div>
 
