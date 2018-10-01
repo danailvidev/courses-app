@@ -14,4 +14,20 @@ constructor(private http: Http) { }
       .map(res => res.json());
   }
 
+  createCourse() {
+
+  }
+
+  getCourseById() {
+
+  }
+
+  updateCourse() {
+
+  }
+
+  removeCourse() {
+
+  }
+
 }

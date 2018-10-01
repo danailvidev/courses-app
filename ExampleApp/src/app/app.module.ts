@@ -15,6 +15,7 @@ import { OrderbyPipe } from './orderby.pipe';
 import { FilterPipe } from './filter.pipe';
 import { CoursedateDirective } from './coursedate.directive';
 import { LoginComponent } from './login/login.component';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 
 @NgModule({
    declarations: [
@@ -29,12 +30,14 @@ import { LoginComponent } from './login/login.component';
       OrderbyPipe,
       FilterPipe,
       CoursedateDirective,
-      LoginComponent
+      LoginComponent,
+      routingComponents
    ],
    imports: [
       BrowserModule,
       HttpModule,
-      FormsModule
+      FormsModule,
+      AppRoutingModule
    ],
    providers: [
       CoursesService

@@ -1,0 +1,21 @@
+<h2>Add New Course</h2>
+
+<form id="addnewcourse" name="addnewcourse" #courseData = "ngForm" (ngSubmit) = "addNewCourse(courseData.value)">
+
+<label>Title: *Required</label>
+<input class="form-control" type = "text" name = "title" id= "title" placeholder="Title" ngModel>
+
+<label>Description: *Required</label>
+<textarea class="form-control" name="description" id="description" placeholder="Description" ngModel></textarea>
+
+
+<label>Date: *Required</label>
+<input class="form-control" type="text" name="date" id="date" placeholder="mm/dd/yyyy" ngModel>
+
+<label>Duration: *Required</label>
+<input class="form-control" type="text" name="duration" id="duration" placeholder="Duration in minutes" ngModel>
+
+<label>Authors: *Required</label>
+<input class="form-control" type="text" name="authors" id="authors" placeholder="Authors" ngModel>
+
+</form>

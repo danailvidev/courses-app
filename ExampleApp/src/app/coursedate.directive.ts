@@ -2,23 +2,31 @@ import { Directive, ElementRef, Input, OnInit } from "@angular/core";
 
 
 @Directive({
-  selector: '[appCoursedate]'
+  selector: "[appCoursedate]"
 })
-export class CoursedateDirective {
+export class CoursedateDirective implements OnInit {
+  @Input()
+  creation_date: string;
+  today = Date.now();
 
-  constructor(element: ElementRef) { 
+  ngOnInit() {
+    let creation_date = this.creation_date;
+  }
 
-    let borderColor;
+  constructor(element: ElementRef) {
+    let borderColor: string;
 
-    if (1>4) {
+    if (1 > 4) {
       borderColor = "blue";
-    } else if (1<4) {
+    } else if (1 < 4) {
       borderColor = "green";
     } else {
       borderColor = "gray";
     }
 
+    console.log(this.creation_date);
+
     element.nativeElement.style.borderColor = borderColor;
   }
-
 }
+ 

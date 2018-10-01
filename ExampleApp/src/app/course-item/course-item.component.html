@@ -1,4 +1,4 @@
-<div [ngClass]="{'top-rated': course.toprated === true}" appCoursedate  class="course-item">
+<div class="course-item" [ngClass]="{'top-rated': course.toprated === true}" appCoursedate [creation_date]="course.creation_date">
   <div class="course-details">
     <p>
       <a href="">{{course.title | uppercase}} </a> <span *ngIf="course.toprated === true"> | <i class=" fa fa-star"></i></span>
@@ -9,9 +9,9 @@
 
   <div class="course-description">
     <p>
-      {{course.description}}
+      {{course.description}}  
     </p> 
     <a class="btn btn-sm btn-outline-secondary" href="#">Delete</a>
 
   </div>
-</div>
+</div>  
