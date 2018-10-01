@@ -10,7 +10,8 @@ export class CoursesService {
 constructor(private http: Http) { }
 
   getAllCourses() {
-    return this.http.get("../../data/courses.json")
+    return this.http
+      .get("http://localhost:3000/courses")
       .map(res => res.json());
   }
 
