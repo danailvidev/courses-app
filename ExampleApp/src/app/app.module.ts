@@ -16,6 +16,7 @@ import { FilterPipe } from './filter.pipe';
 import { CoursedateDirective } from './coursedate.directive';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { UpdateCourseComponent } from './update-course/update-course.component';
 
 @NgModule({
    declarations: [
@@ -31,7 +32,8 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
       FilterPipe,
       CoursedateDirective,
       LoginComponent,
-      routingComponents
+      routingComponents,
+      UpdateCourseComponent
    ],
    imports: [
       BrowserModule,

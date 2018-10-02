@@ -1,0 +1,21 @@
+<div class="alert alert-success" role="alert" *ngIf="isAdded">
+    <!-- {{confirmationMessage}} -->
+</div>
+
+<form id="addnewcourse" name="addnewcourse" #courseData="ngForm" (ngSubmit)="updateCourse(courseData.value)">
+
+  <label>Title: *Required</label>
+  <input class="form-control" type="text" name="title" id="title" placeholder="Title" [(ngModel)] = "course.title" ngModel>
+
+  <label>Description: *Required</label>
+  <textarea class="form-control" name="description" id="description" placeholder="Description" [(ngModel)]="course.description" ngModel></textarea>
+
+
+  <label>Date: *Required</label>
+  <input class="form-control" type="text" name="creation_date" id="date" placeholder="mm/dd/yyyy" [(ngModel)]="course.creation_date" ngModel>
+
+  <label>Duration: *Required</label>
+  <input class="form-control" type="text" name="duration" id="duration" placeholder="Duration in minutes" [(ngModel)]="course.duration" ngModel>
+
+  <input class="btn btn-success" type="submit" value="Update Course">
+</form>

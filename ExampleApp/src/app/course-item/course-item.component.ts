@@ -10,8 +10,8 @@ export class CourseItemComponent implements OnInit {
   @Input("course")
   course: Course;
 
-
   constructor() {}
 
   ngOnInit() {}
 }
+ 
