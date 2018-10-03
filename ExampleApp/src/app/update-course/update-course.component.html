@@ -1,21 +1,34 @@
-<div class="alert alert-success" role="alert" *ngIf="isAdded">
-    <!-- {{confirmationMessage}} -->
-</div>
 
-<form id="addnewcourse" name="addnewcourse" #courseData="ngForm" (ngSubmit)="updateCourse(courseData.value)">
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()">
 
-  <label>Title: *Required</label>
-  <input class="form-control" type="text" name="title" id="title" placeholder="Title" [(ngModel)] = "course.title" ngModel>
+   <label>Title: *Required</label>
+   <input class="form-control" type="text" name="name" id="title" placeholder="Title" formControlName ="name">
 
-  <label>Description: *Required</label>
-  <textarea class="form-control" name="description" id="description" placeholder="Description" [(ngModel)]="course.description" ngModel></textarea>
+   <label>Description: *Required</label>
+   <textarea class="form-control" name="description" id="description" placeholder="Description" formControlName ="description"></textarea>
 
 
-  <label>Date: *Required</label>
-  <input class="form-control" type="text" name="creation_date" id="date" placeholder="mm/dd/yyyy" [(ngModel)]="course.creation_date" ngModel>
+   <label>Date: *Required</label>
+   <input class="form-control" type="text" name="date" id="creation_date" placeholder="mm/dd/yyyy" formControlName="date">
 
-  <label>Duration: *Required</label>
-  <input class="form-control" type="text" name="duration" id="duration" placeholder="Duration in minutes" [(ngModel)]="course.duration" ngModel>
+   <label>Duration: *Required</label>
+   <input class="form-control" type="text" name="length" id="duration" placeholder="Duration in minutes" formControlName="length">
 
-  <input class="btn btn-success" type="submit" value="Update Course">
+  <label>Top Rated: *Required</label>
+
+    <div class="radio">
+      <label>
+        <input type="radio" name="isTopRated" formControlName="isTopRated" value='true' checked> Yes
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="isTopRated" formControlName="isTopRated" value='false'> No
+      </label>
+    </div>
+
+
+
+  <button class="btn btn-success">UPDATE</button> 
+  
 </form>

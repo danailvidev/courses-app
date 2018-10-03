@@ -3,3 +3,47 @@
         max-width: 400px;
     }
 }
+
+.course-item {
+  border: 1px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #000;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+
+  .course-details {
+    display: flex;
+    justify-content: space-between;
+
+    .course-time {
+      span {
+        margin-left: 15px;
+      }
+    }
+
+    span {
+      i {
+        color: #FFD700;
+      }
+    }
+  }
+
+  .course-description {
+    display: flex;
+  }
+
+  .btn {
+    width: 60px;
+    height: 30px;
+  }
+}
+
+.top-rated {
+  background-color: #e9ecef;
+}
+
+.load-more {
+  width: 100%;
+}

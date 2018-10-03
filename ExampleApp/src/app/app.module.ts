@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from "@angular/http";
+import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -8,7 +8,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { FooterComponent } from './footer/footer.component';
 import { UserComponent } from './user/user.component';
 import { CourseListingComponent } from './course-listing/course-listing.component';
-import { CourseItemComponent } from './course-item/course-item.component';
+import { ReactiveFormsModule } from "@angular/forms";
 import { CoursesService } from './services/courses.service';
 import { DurationPipe } from './duration.pipe';
 import { OrderbyPipe } from './orderby.pipe';
@@ -17,6 +17,8 @@ import { CoursedateDirective } from './coursedate.directive';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { UpdateCourseComponent } from './update-course/update-course.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+
 
 @NgModule({
    declarations: [
@@ -26,20 +28,21 @@ import { UpdateCourseComponent } from './update-course/update-course.component';
       FooterComponent,
       UserComponent,
       CourseListingComponent,
-      CourseItemComponent,
       DurationPipe,
       OrderbyPipe,
       FilterPipe,
       CoursedateDirective,
       LoginComponent,
       routingComponents,
-      UpdateCourseComponent
+      UpdateCourseComponent,
+      NotFoundComponent
    ],
    imports: [
       BrowserModule,
-      HttpModule,
+      HttpClientModule,
       FormsModule,
-      AppRoutingModule
+      AppRoutingModule,
+      ReactiveFormsModule
    ],
    providers: [
       CoursesService

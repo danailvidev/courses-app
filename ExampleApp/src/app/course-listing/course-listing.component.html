@@ -5,7 +5,25 @@
     </nav>
 </div>
 
-<div *ngFor="let course of courses |  orderby:order:ascending | filter: queryString : 'title' ; let i = index">
-  <app-course-item  [course]="course"></app-course-item>
+<div *ngFor="let course of courses | filter: queryString : 'name' ; let i = index">
+  <div class="course-item" [ngClass]="{'top-rated': isTopRated}">
+    <div class="course-details">
+      <p>
+        <a href="">{{course.name | uppercase}} </a> <span *ngIf="isTopRated"> | <i class=" fa fa-star"></i></span>
+      </p>
+      <p class="course-time">{{course.length | duration}} <span>{{course.date}}</span></p>
+      <button class="btn btn-sm btn-outline-secondary" (click)="updateCourse(course)">Edit</button>
+    </div>
+
+    <div class="course-description">
+      <p>
+        {{course.description}}
+      </p>
+      <button class="btn btn-sm btn-outline-secondary" (click)="deleteCourse(course)">Delete</button>
+    </div>
+  </div>
 </div>
+
+
+<button class="btn btn-outline-secondary load-more">Load More</button>
 

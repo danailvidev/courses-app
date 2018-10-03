@@ -1,23 +1,29 @@
 
-<div class="alert alert-success" role="alert" *ngIf="isAdded">
-   {{confirmationMessage}}
-</div>
-
-<form id="addnewcourse" name="addnewcourse" #courseData = "ngForm" (ngSubmit) = "addNewCourse(courseData.value)">
+<form [formGroup]="addForm" (ngSubmit)="onSubmit()">
 
     <label>Title: *Required</label>
-    <input class="form-control" type = "text" name = "title" id= "title" placeholder="Title"  ngModel>
+    <input class="form-control" type="text" name="name" id="name" placeholder="Title" formControlName="name">
 
     <label>Description: *Required</label>
-    <textarea class="form-control" name="description" id="description" placeholder="Description"  ngModel></textarea>
-
+    <textarea class="form-control" name="description" id="description" placeholder="Description" formControlName="description"></textarea>
 
     <label>Date: *Required</label>
-    <input class="form-control" type="text" name="creation_date" id="date" placeholder="mm/dd/yyyy" ngModel>
+    <input class="form-control" type="text" name="date" id="date" placeholder="mm/dd/yyyy" formControlName="date">
 
     <label>Duration: *Required</label>
-    <input class="form-control" type="text" name="duration" id="duration" placeholder="Duration in minutes"  ngModel>
+    <input class="form-control" type="text" name="length" id="length" placeholder="Duration in minutes" formControlName="length">
 
-    <input class="btn btn-success" type="submit" value="Add Course">
+    <label>Top Rated: *Required</label>
+
+        <div class="radio">
+        <label><input type="radio" name="isTopRated" formControlName="isTopRated" value="true" checked> Yes</label>
+        </div>
+        <div class="radio">
+        <label><input type="radio" name="isTopRated" formControlName="isTopRated" value="false"> No</label>
+        </div>
+  
+
+    <button class="btn btn-success">CREATE</button>
+
 </form>
 

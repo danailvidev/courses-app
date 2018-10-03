@@ -1,34 +1,29 @@
 import { Injectable } from '@angular/core';
-import { Http } from "@angular/http";
-import "rxjs/add/operator/map";
-
+import { HttpClient } from '@angular/common/http';
+import { Course } from "../course"; 
 
 @Injectable()
-
 export class CoursesService {
+  constructor(private http: HttpClient) {}
+  baseUrl: string = "http://localhost:3004/courses";
 
-constructor(private http: Http) { }
-
-  getAllCourses() {
-    return this.http
-      .get("http://localhost:3000/courses")
-      .map(res => res.json());
+  getCourses() {
+    return this.http.get<Course[]>(this.baseUrl);
   }
 
-  createCourse() {
-
+  getCourseById(id: number) {
+    return this.http.get<Course>(this.baseUrl + "/" + id);
   }
 
-  getCourseById() {
-
+  createCourse(course: Course) {
+    return this.http.post(this.baseUrl, course);
   }
 
-  updateCourse() {
-
+  updateCourse(course: Course) {
+    return this.http.put(this.baseUrl + "/" + course.id, course);
   }
 
-  removeCourse() {
-
+  deleteCourse(id: number) {
+    return this.http.delete(this.baseUrl + "/" + id);
   }
-
 }
