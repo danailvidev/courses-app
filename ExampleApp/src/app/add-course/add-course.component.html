@@ -1,29 +1,36 @@
+<form [formGroup]="addForm" (ngSubmit)="onSubmit(addForm)">
 
-<form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+  <label>Title: *Required</label>
+  <input class="form-control" type="text" name="name" id="name" placeholder="Title" formControlName="name">
 
-    <label>Title: *Required</label>
-    <input class="form-control" type="text" name="name" id="name" placeholder="Title" formControlName="name">
+  <label>Description: *Required</label>
+  <textarea class="form-control" name="description" id="description" placeholder="Description" formControlName="description"></textarea>
 
-    <label>Description: *Required</label>
-    <textarea class="form-control" name="description" id="description" placeholder="Description" formControlName="description"></textarea>
+  <label>Date: *Required</label>
+  <input class="form-control" type="text" name="date" id="date" placeholder="mm/dd/yyyy" formControlName="date">
 
-    <label>Date: *Required</label>
-    <input class="form-control" type="text" name="date" id="date" placeholder="mm/dd/yyyy" formControlName="date">
+  <label>Duration: *Required</label>
+  <input class="form-control" type="number" name="length" id="length" placeholder="Duration in minutes" formControlName="length">
 
-    <label>Duration: *Required</label>
-    <input class="form-control" type="text" name="length" id="length" placeholder="Duration in minutes" formControlName="length">
+  <label>Top Rated: *Required</label>
 
-    <label>Top Rated: *Required</label>
+  <div class="radio">
+    <label><input type="radio" name="isTopRated" formControlName="isTopRated" value="true" checked> Yes</label>
+  </div>
+  <div class="radio">
+    <label><input type="radio" name="isTopRated" formControlName="isTopRated" value="false"> No</label>
+  </div>
 
-        <div class="radio">
-        <label><input type="radio" name="isTopRated" formControlName="isTopRated" value="true" checked> Yes</label>
-        </div>
-        <div class="radio">
-        <label><input type="radio" name="isTopRated" formControlName="isTopRated" value="false"> No</label>
-        </div>
-  
+  <div>
+    <label>Authors</label>
+    <select class="custom-select custom-select-sm" multiple>
+      <option value="1">Greta Richardson</option>
+      <option value="2">Deana Bruce</option>
+      <option value="3">Patsy Bright</option>
+    </select>
+  </div>
 
-    <button class="btn btn-success">CREATE</button>
+
+  <button type="submit" class="btn btn-success">CREATE</button>
 
 </form>
-

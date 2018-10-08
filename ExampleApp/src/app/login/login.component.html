@@ -1,13 +1,14 @@
 
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-signin">
-    <input class="form-control" placeholder="Email" type="email" class="form-control" formControlName="email" id="email">
-      <div *ngIf="submitted && loginForm.controls.email.errors" class="error">
-        <div *ngIf="loginForm.controls.email.errors.required">Email is required</div>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)" class="form-signin">
+    <input class="form-control" placeholder="Email" type="text" class="form-control" formControlName="login" id="login">
+      <div *ngIf="submitted && loginForm.controls.login.errors" class="error">
+        <div *ngIf="loginForm.controls.login.errors.required">Email is required</div>
       </div>
       <input class="form-control" placeholder="Password" type="password" class="form-control" formControlName="password" id="pwd">
       <div *ngIf="submitted && loginForm.controls.password.errors" class="error">
         <div *ngIf="loginForm.controls.password.errors.required">Password is required</div>
       </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <div *ngIf="errorMessage" style="color:red;text-align: center;width:100%;">{{errorMessage}}</div>
 </form>
 

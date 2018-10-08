@@ -7,14 +7,13 @@ module.exports = (server) => {
 	router.post('/auth/login', (req, res, next) => {
 		let users = server.db.getState().users,
 			matchedUser = users.find((user) => {
-				console.log(user);
 				return user.login.toUpperCase() === req.body.login.toUpperCase();
 			});
 
 		if(!matchedUser) {
 			res.status(401).send('Wrong username');
 		} else if(matchedUser.password === req.body.password) {
-			res.json({ token: matchedUser.fakeToken});
+			res.json({ token: matchedUser.fakeToken, userData: matchedUser});
 		} else {
 			res.status(401).send("Wrong password");
 		}
