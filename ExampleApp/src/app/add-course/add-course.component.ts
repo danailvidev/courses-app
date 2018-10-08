@@ -28,14 +28,14 @@ export class AddCourseComponent implements OnInit {
         this.addForm = this.fb.group({
             'name': new FormControl('', Validators.required),
             'description': new FormControl('', Validators.required),
-            'creation_date': new FormControl('', Validators.required),
-            'durationLength': new FormControl(Validators.required),
+            'date': new FormControl('', Validators.required),
+            'length': new FormControl(Validators.required),
             'authors': new FormControl('', Validators.required)
         });
     }
 
-    onSubmit() {
-        this.store.dispatch(new courseActions.CreateCourseAction(this.addForm.value));
+    onSubmit(value) {
+        this.store.dispatch(new courseActions.CreateCourseAction(value));
         this.router.navigate(['/courses']);
     }
 }

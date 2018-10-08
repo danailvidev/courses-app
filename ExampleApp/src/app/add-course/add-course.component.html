@@ -10,12 +10,12 @@
   <textarea class="form-control" name="description" id="description" placeholder="Description"  formControlName="description"></textarea>
 
   <label>Date: </label>
-  <show-errors [control]="addForm.controls.creation_date" [ngClass]="{'show' : (addForm.get('creation_date').dirty || addForm.get('creation_date').touched) && addForm.controls.creation_date.errors}"></show-errors>
-  <input class="form-control" type="text" name="creation_date" id="creation_date" placeholder="mm/dd/yyyy"   formControlName="creation_date">
+  <show-errors [control]="addForm.controls.date" [ngClass]="{'show' : (addForm.get('date').dirty || addForm.get('date').touched) && addForm.controls.date.errors}"></show-errors>
+  <input class="form-control" type="text" name="date" id="date" placeholder="mm/dd/yyyy"   formControlName="date">
 
   <label>Duration: </label>
-  <show-errors [control]="addForm.controls.durationLength" [ngClass]="{'show' : (addForm.get('durationLength').dirty || addForm.get('durationLength').touched) && addForm.controls.durationLength.errors}"></show-errors>
-  <input class="form-control" type="number" name="durationLength" id="durationLength" placeholder="Duration in minutes" formControlName="durationLength">
+  <show-errors [control]="addForm.controls.length" [ngClass]="{'show' : (addForm.get('length').dirty || addForm.get('length').touched) && addForm.controls.length.errors}"></show-errors>
+  <input class="form-control" type="number" name="length" id="length" placeholder="Duration in minutes" formControlName="length">
 
   <label>Top Rated:</label>
 
