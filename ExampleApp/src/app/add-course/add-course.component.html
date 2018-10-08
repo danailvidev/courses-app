@@ -1,29 +1,34 @@
-<form [formGroup]="addForm" (ngSubmit)="onSubmit(addForm)">
+<form [formGroup]="addForm" (ngSubmit)="onSubmit(addForm.value)">
 
-  <label>Title: *Required</label>
-  <input class="form-control" type="text" name="name" id="name" placeholder="Title" formControlName="name">
+  <label>Title: </label>
+  <show-errors [control]="addForm.controls.name" [ngClass]="{'show' : (addForm.get('name').dirty || addForm.get('name').touched) && addForm.controls.name.errors}"></show-errors>
+  <input class="form-control" type="text" name="name" id="name" placeholder="Title"   formControlName="name">
 
-  <label>Description: *Required</label>
-  <textarea class="form-control" name="description" id="description" placeholder="Description" formControlName="description"></textarea>
 
-  <label>Date: *Required</label>
-  <input class="form-control" type="text" name="date" id="date" placeholder="mm/dd/yyyy" formControlName="date">
+  <label>Description: </label>
+  <show-errors [control]="addForm.controls.description" [ngClass]="{'show' : (addForm.get('description').dirty || addForm.get('description').touched) && addForm.controls.description.errors}"></show-errors>
+  <textarea class="form-control" name="description" id="description" placeholder="Description"  formControlName="description"></textarea>
 
-  <label>Duration: *Required</label>
-  <input class="form-control" type="number" name="length" id="length" placeholder="Duration in minutes" formControlName="length">
+  <label>Date: </label>
+  <show-errors [control]="addForm.controls.creation_date" [ngClass]="{'show' : (addForm.get('creation_date').dirty || addForm.get('creation_date').touched) && addForm.controls.creation_date.errors}"></show-errors>
+  <input class="form-control" type="text" name="creation_date" id="creation_date" placeholder="mm/dd/yyyy"   formControlName="creation_date">
 
-  <label>Top Rated: *Required</label>
+  <label>Duration: </label>
+  <show-errors [control]="addForm.controls.durationLength" [ngClass]="{'show' : (addForm.get('durationLength').dirty || addForm.get('durationLength').touched) && addForm.controls.durationLength.errors}"></show-errors>
+  <input class="form-control" type="number" name="durationLength" id="durationLength" placeholder="Duration in minutes" formControlName="durationLength">
+
+  <label>Top Rated:</label>
 
   <div class="radio">
-    <label><input type="radio" name="isTopRated" formControlName="isTopRated" value="true" checked> Yes</label>
+    <label><input type="radio" name="isTopRated"  value="true" checked > Yes</label>
   </div>
   <div class="radio">
-    <label><input type="radio" name="isTopRated" formControlName="isTopRated" value="false"> No</label>
+    <label><input type="radio" name="isTopRated"  value="false"> No</label>
   </div>
 
   <div>
-    <label>Authors</label>
-    <select class="custom-select custom-select-sm" name="authors" formControlName="authors" multiple>
+    <label>Authors *Required</label>
+    <select class="custom-select custom-select-sm" name="authors"  multiple formControlName="authors">
       <option value="Greta Richardson">Greta Richardson</option>
       <option value="Deana Bruce">Deana Bruce</option>
       <option value="Patsy Bright">Patsy Bright</option>
@@ -31,6 +36,6 @@
   </div>
 
 
-  <button type="submit" class="btn btn-success">CREATE</button>
+  <button type="submit" class="btn btn-success" [disabled]="!addForm.valid">CREATE</button>
 
 </form>

@@ -1,14 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { FooterComponent } from './footer/footer.component';
 import { UserComponent } from './user/user.component';
 import { CourseListingComponent } from './course-listing/course-listing.component';
-import { ReactiveFormsModule } from "@angular/forms";
 import { CoursesService } from './services/courses.service';
 import { DurationPipe } from './duration.pipe';
 import { OrderbyPipe } from './orderby.pipe';

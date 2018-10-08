@@ -8,3 +8,13 @@ textarea {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.errors {
+    display: none;
+    width: 100%;
+    color: red;
+
+    &.show {
+      display: block;
+    }
+  }

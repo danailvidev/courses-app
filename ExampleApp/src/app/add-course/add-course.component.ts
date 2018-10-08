@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { CoursesService } from './../services/courses.service';
 import { Router } from '@angular/router';
 import * as courseActions from './../ngrx/actions/course.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from '../interfaces/app-state';
+import { Course } from '../course';
 
 @Component({
     selector: 'app-add-course',
@@ -13,26 +14,23 @@ import { AppState } from '../interfaces/app-state';
 })
 export class AddCourseComponent implements OnInit {
     constructor(
-        private formBuilder: FormBuilder,
+        private fb: FormBuilder,
         private router: Router,
         private courseService: CoursesService,
         private store: Store<AppState>
     ) { }
 
+    course: Course = new Course();
+
     addForm: FormGroup;
 
     ngOnInit() {
-        this.addForm = this.formBuilder.group({
-            id: [],
-            name: ['', Validators.required],
-            date: ['', Validators.required],
-            title: ['', Validators.required],
-            length: ['', Validators.required],
-            description: ['', Validators.required],
-            creation_date: ['', Validators.required],
-            duration: ['', Validators.required],
-            isTopRated: ['', Validators.required],
-            authors: ['', Validators.required]
+        this.addForm = this.fb.group({
+            'name': new FormControl('', Validators.required),
+            'description': new FormControl('', Validators.required),
+            'creation_date': new FormControl('', Validators.required),
+            'durationLength': new FormControl(Validators.required),
+            'authors': new FormControl('', Validators.required)
         });
     }
 

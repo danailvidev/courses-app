@@ -7,6 +7,7 @@ import { UpdateCourseComponent } from './update-course/update-course.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './services/auth.guard';
 import { LoaderComponent } from './loader/loader.component';
+import { ShowErrorsComponent } from './show-errors.component';
 
 const routes: Routes = [
     {
@@ -27,4 +28,4 @@ const routes: Routes = [
 })
 
 export class AppRoutingModule { }
-export const routingComponents = [CourseListingComponent, AddCourseComponent, LoaderComponent];
+export const routingComponents = [CourseListingComponent, AddCourseComponent, LoaderComponent, ShowErrorsComponent];
