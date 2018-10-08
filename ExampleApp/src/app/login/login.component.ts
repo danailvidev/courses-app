@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { LoaderService } from '../loader/loader.service';
 
 @Component({
     selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
     constructor(
         private auth: AuthenticationService,
         private router: Router,
-        private fb: FormBuilder) { }
+        private fb: FormBuilder,
+        private loaderSvc: LoaderService) { }
 
     ngOnInit() {
         this.initLoginForm();
@@ -37,6 +39,7 @@ export class LoginComponent implements OnInit {
             this.errorMessage = '';
             this.router.navigate(['/courses']);
         }, e => {
+            this.loaderSvc.showLoader$.next(false);
             this.errorMessage = e.statusText;
         });
     }

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -13,37 +14,29 @@ export class AuthenticationService {
     DATA_KEY = 'userData';
     headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     options = new HttpResponse({ headers: this.headers });
-    private _userData: any;
 
-    get userData(): any {
-        return this._userData;
+    get token() {
+        return localStorage.getItem(this.TOKEN_KEY);
     }
 
-    set userData(value: any) {
-        this._userData = value;
-    }
-
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private router: Router) {
     }
 
     login(userData): Observable<any> {
         const body = userData;
-        return this.http.post<any>(this.baseAuthUrl + 'auth/login', body, this.options)
-            .pipe(map(res => {
+        return this.http.post<any>(this.baseAuthUrl + 'auth/login', body)
+            .pipe(
+                map(res => {
                 this.saveToken(res.token);
-                // login successful if there's a jwt token in the response
                 this.saveUserData(res.userData);
-
-                return true;
             }));
     }
 
     logout(): boolean {
         try {
             localStorage.removeItem(this.TOKEN_KEY);
-            if (this.userData) {
-                this.userData = null;
-            }
+            localStorage.removeItem(this.DATA_KEY);
+            this.router.navigate(['/login']);
             return true;
         } catch (err) {
             console.error('server error:', err);
@@ -63,10 +56,15 @@ export class AuthenticationService {
         return !!localStorage.getItem(this.TOKEN_KEY);
     }
 
-    userInfo(): any {
-        if (!this.userData) {
-            this.userData = JSON.parse(localStorage.getItem(this.DATA_KEY));
+    userInfo(): Observable<any> {
+        if (this.isAuthenticated) {
+            return this.http.post<any>(this.baseAuthUrl + 'auth/userinfo', {})
+            .pipe(map(res => {
+                this.saveUserData(res.userData);
+                return res;
+            }));
+        } else {
+            return of(false);
         }
-        return of(this.userData);
     }
 }

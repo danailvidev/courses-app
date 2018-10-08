@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -20,40 +20,47 @@ import { UpdateCourseComponent } from './update-course/update-course.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { BorderColorDirective } from './border.directive';
 import { AuthenticationService } from './services/auth.service';
+import { AuthInterceptor } from './services/auth.interceptor';
+import { AuthGuard } from './services/auth.guard';
+import { LoaderService } from './loader/loader.service';
+import { ResponseInterceptor } from './services/response.interceptor';
 
 
 @NgModule({
-   declarations: [
-      AppComponent,
-      HeaderComponent,
-      BreadcrumbComponent,
-      FooterComponent,
-      UserComponent,
-      CourseListingComponent,
-      DurationPipe,
-      OrderbyPipe,
-      FilterPipe,
-      CoursedateDirective,
-      LoginComponent,
-      routingComponents,
-      UpdateCourseComponent,
-      NotFoundComponent,
-      BorderColorDirective
-   ],
-   imports: [
-      BrowserModule,
-      HttpClientModule,
-      FormsModule,
-      AppRoutingModule,
-      ReactiveFormsModule
-   ],
-   providers: [
-      CoursesService,
-      AuthenticationService
-   ],
-   bootstrap: [
-      AppComponent
-   ]
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        BreadcrumbComponent,
+        FooterComponent,
+        UserComponent,
+        CourseListingComponent,
+        DurationPipe,
+        OrderbyPipe,
+        FilterPipe,
+        CoursedateDirective,
+        LoginComponent,
+        routingComponents,
+        UpdateCourseComponent,
+        NotFoundComponent,
+        BorderColorDirective
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        FormsModule,
+        AppRoutingModule,
+        ReactiveFormsModule
+    ],
+    providers: [
+        CoursesService,
+        AuthenticationService,
+        AuthGuard,
+        LoaderService,
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true },
+    ],
+    bootstrap: [
+        AppComponent
+    ]
 })
 export class AppModule { }
- 

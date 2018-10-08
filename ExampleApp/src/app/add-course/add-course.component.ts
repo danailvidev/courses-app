@@ -28,13 +28,16 @@ export class AddCourseComponent implements OnInit {
             description: ['', Validators.required],
             creation_date: ['', Validators.required],
             duration: ['', Validators.required],
-            isTopRated: ['', Validators.required]
+            isTopRated: ['', Validators.required],
+            authors: ['', Validators.required]
         });
     }
 
     onSubmit() {
         this.courseService.createCourse(this.addForm.value).subscribe(data => {
-            this.router.navigate(['courses']);
+            if (data) {
+                this.router.navigate(['courses']);
+            }
         });
     }
 }

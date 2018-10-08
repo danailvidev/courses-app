@@ -8,7 +8,7 @@ module.exports = (server) => {
 		let users = server.db.getState().users,
 			matchedUser = users.find((user) => {
 				return user.login.toUpperCase() === req.body.login.toUpperCase();
-			});
+            });
 
 		if(!matchedUser) {
 			res.status(401).send('Wrong username');

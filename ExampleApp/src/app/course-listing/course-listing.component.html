@@ -1,23 +1,32 @@
 <div class="toolbox">
-<nav class="navbar navbar-light bg-light  d-flex flex-row">
-      <input class="form-control" type="text" [(ngModel)]="queryString" placeholder="Search Course">
-      <a class="btn btn-sm btn-outline-secondary" routerLink="/courses/new" routerLinkActive="router-link-active">Add Course</a>
-    </nav>
+  <nav class="navbar navbar-light bg-light  d-flex flex-row">
+    <input class="form-control" type="text" #search placeholder="Search Course">
+    <span>
+        <a class="btn btn-sm btn-outline-secondary" (click)="sortCourses()">
+                <i *ngIf="pageSort == 'desc'" class="fa fa-arrow-up" aria-hidden="true"></i>
+                <i *ngIf="pageSort == 'asc'" class="fa fa-arrow-down" aria-hidden="true"></i>Sort</a>
+    <a class="btn btn-sm btn-outline-secondary" style="margin-left:8px" routerLink="/courses/new" routerLinkActive="router-link-active">Add
+      Course</a>
+    </span>
+    
+  </nav>
 </div>
 
-<div *ngFor="let course of courses | filter: queryString : 'name' ; let i = index">
+
+
+<div *ngFor="let course of courses | orderby; let i = index">
   <div borderColor [time]="course.date" class="course-item" [ngClass]="{'top-rated': isTopRated}">
     <div class="course-details">
       <p>
-        <a href="">{{course.name | uppercase}} </a> <span *ngIf="isTopRated"> | <i class=" fa fa-star"></i></span>
+        <a href="">{{course?.name | uppercase}} </a> <span *ngIf="isTopRated"> | <i class=" fa fa-star"></i></span>
       </p>
-      <p class="course-time">{{course.length | duration}} <span>{{course.date}}</span></p>
+      <p class="course-time">{{course?.length | duration}} <span>{{course?.date}}</span></p>
       <button class="btn btn-sm btn-outline-secondary" (click)="updateCourse(course)">Edit</button>
     </div>
 
     <div class="course-description">
       <p>
-        {{course.description}}
+        {{course?.description}}
       </p>
       <button class="btn btn-sm btn-outline-secondary" (click)="deleteCourse(course)">Delete</button>
     </div>
@@ -25,5 +34,4 @@
 </div>
 
 
-<button class="btn btn-outline-secondary load-more">Load More</button>
-
+<button class="btn btn-outline-secondary load-more" (click)="loadMore()">Load More</button>

@@ -24,7 +24,6 @@ export class CoursedateDirective implements OnInit {
       borderColor = "gray";
     }
 
-    console.log(this.creation_date);
 
     element.nativeElement.style.borderColor = borderColor;
   }
