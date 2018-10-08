@@ -25,6 +25,14 @@ import { AuthGuard } from './services/auth.guard';
 import { LoaderService } from './loader/loader.service';
 import { ResponseInterceptor } from './services/response.interceptor';
 
+// ngrx
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { authReducer } from './ngrx/reducers/auth.reducer';
+import { AuthEffects } from './ngrx/effects/auth.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { CourseEffects } from './ngrx/effects/courses.effects';
+import { courseReducer } from './ngrx/reducers/course.reducer';
 
 @NgModule({
     declarations: [
@@ -49,7 +57,17 @@ import { ResponseInterceptor } from './services/response.interceptor';
         HttpClientModule,
         FormsModule,
         AppRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        // ngrx
+        StoreModule.forRoot({
+            'currentUser': authReducer,
+            courses: courseReducer,
+        }),
+        EffectsModule.forRoot([
+            AuthEffects,
+            CourseEffects
+        ]),
+        StoreDevtoolsModule.instrument()
     ],
     providers: [
         CoursesService,

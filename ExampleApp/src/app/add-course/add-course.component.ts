@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CoursesService } from './../services/courses.service';
 import { Router } from '@angular/router';
-
+import * as courseActions from './../ngrx/actions/course.actions';
+import { Store } from '@ngrx/store';
+import { AppState } from '../interfaces/app-state';
 
 @Component({
     selector: 'app-add-course',
@@ -13,7 +15,8 @@ export class AddCourseComponent implements OnInit {
     constructor(
         private formBuilder: FormBuilder,
         private router: Router,
-        private courseService: CoursesService
+        private courseService: CoursesService,
+        private store: Store<AppState>
     ) { }
 
     addForm: FormGroup;
@@ -34,10 +37,7 @@ export class AddCourseComponent implements OnInit {
     }
 
     onSubmit() {
-        this.courseService.createCourse(this.addForm.value).subscribe(data => {
-            if (data) {
-                this.router.navigate(['courses']);
-            }
-        });
+        this.store.dispatch(new courseActions.CreateCourseAction(this.addForm.value));
+        this.router.navigate(['/courses']);
     }
 }

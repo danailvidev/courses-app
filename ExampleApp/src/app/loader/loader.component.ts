@@ -12,7 +12,6 @@ export class LoaderComponent implements OnInit {
 
     ngOnInit() {
         this.loaderSvc.showLoader$.subscribe( res => {
-            console.log(res);
             this.show = res;
         });
      }

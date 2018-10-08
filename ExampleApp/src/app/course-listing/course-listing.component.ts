@@ -3,7 +3,10 @@ import { Router } from "@angular/router";
 import { CoursesService } from "./../services/courses.service";
 import { Course } from "../course";
 import { Observable, fromEvent } from 'rxjs';
-import { debounceTime, takeUntil, map, takeWhile } from 'rxjs/operators';
+import { debounceTime, takeUntil, map, takeWhile, filter } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import { AppState } from '../interfaces/app-state';
+import * as courseActions from '../ngrx/actions/course.actions';
 
 @Component({
     selector: "app-course-listing",
@@ -11,7 +14,7 @@ import { debounceTime, takeUntil, map, takeWhile } from 'rxjs/operators';
     styleUrls: ["./course-listing.component.scss"]
 })
 export class CourseListingComponent implements OnInit, AfterViewInit {
-    courses: Course[] = [];
+    courses$: Observable<Course[]>;
     pageStart = 0;
     pageCount = 5;
     textFragment = '';
@@ -19,7 +22,9 @@ export class CourseListingComponent implements OnInit, AfterViewInit {
     @ViewChild('search') search: ElementRef;
 
 
-    constructor(private router: Router, private courseService: CoursesService) { }
+    constructor(private router: Router, private store: Store<AppState>, private courseService: CoursesService) {
+        this.courses$ = this.store.select(state => state.courses);
+     }
 
     ngOnInit() {
         this.getCourses();
@@ -40,7 +45,7 @@ export class CourseListingComponent implements OnInit, AfterViewInit {
 
     deleteCourse(course: Course): void {
         this.courseService.deleteCourse(course.id).subscribe(data => {
-            this.courses = this.courses.filter(c => c !== course);
+            this.getCourses();
         });
     }
 
@@ -61,9 +66,7 @@ export class CourseListingComponent implements OnInit, AfterViewInit {
             textFragment: this.textFragment,
             sort: this.pageSort
         };
-        this.courseService.getCourses(params).subscribe(data => {
-            this.courses = data;
-        });
+        this.store.dispatch(new courseActions.LoadCoursesAction());
     }
 
     sortCourses() {

@@ -37,7 +37,7 @@ module.exports = (server) => {
     setTimeout( () => {
         res.json(courses);
 
-    }, 2000)
+    }, 1000)
   });
 
   return router;

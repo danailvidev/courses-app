@@ -12,9 +12,7 @@
   </nav>
 </div>
 
-
-
-<div *ngFor="let course of courses | orderby; let i = index">
+<div *ngFor="let course of courses$ | async | orderby; let i = index">
   <div borderColor [time]="course.date" class="course-item" [ngClass]="{'top-rated': isTopRated}">
     <div class="course-details">
       <p>
