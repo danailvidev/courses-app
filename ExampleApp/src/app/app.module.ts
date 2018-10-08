@@ -18,6 +18,7 @@ import { LoginComponent } from './login/login.component';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { UpdateCourseComponent } from './update-course/update-course.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { BorderColorDirective } from './border.directive';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
       LoginComponent,
       routingComponents,
       UpdateCourseComponent,
-      NotFoundComponent
+      NotFoundComponent,
+      BorderColorDirective
    ],
    imports: [
       BrowserModule,

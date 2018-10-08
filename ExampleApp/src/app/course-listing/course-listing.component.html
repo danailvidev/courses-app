@@ -6,7 +6,7 @@
 </div>
 
 <div *ngFor="let course of courses | filter: queryString : 'name' ; let i = index">
-  <div class="course-item" [ngClass]="{'top-rated': isTopRated}">
+  <div borderColor [time]="course.date" class="course-item" [ngClass]="{'top-rated': isTopRated}">
     <div class="course-details">
       <p>
         <a href="">{{course.name | uppercase}} </a> <span *ngIf="isTopRated"> | <i class=" fa fa-star"></i></span>
