@@ -15,7 +15,7 @@ export class ResponseInterceptor implements HttpInterceptor {
                     this.loaderSvc.showLoader$.next(false);
                 }
             }, (err: any) => {
-
+                this.loaderSvc.showLoader$.next(false);
             })
         );
     }

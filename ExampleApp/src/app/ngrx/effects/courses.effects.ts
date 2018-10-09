@@ -34,7 +34,8 @@ export class CourseEffects {
         .ofType(courseActions.UPDATE_COURSE)
         .pipe(
             switchMap((action: courseActions.UpdateCourseAction) => this.coursesSvc.updateCourse(action.payload)),
-            map(courses => (new courseActions.UpdateCourseSuccessAction(courses)))
+            map(courses => (new courseActions.UpdateCourseSuccessAction(courses))),
+            tap( () => this.router.navigate(['/courses']))
         );
 
     @Effect() deleteCourse$ = this.actions$

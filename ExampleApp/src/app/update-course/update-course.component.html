@@ -27,8 +27,36 @@
       </label>
     </div>
 
+    <div>
+        <label>Authors</label>
+        <select class="custom-select custom-select-sm" name="authors"  multiple formControlName="authors">
+          <option value="Greta Richardson">Greta Richardson</option>
+          <option value="Deana Bruce">Deana Bruce</option>
+          <option value="Patsy Bright">Patsy Bright</option>
+        </select>
+      </div>
 
 
-  <button class="btn btn-success">UPDATE</button> 
+    <button type="button" class="btn btn-warn mr-2" (click)="back()">Back</button> 
+  <button type="submit" class="btn btn-success">UPDATE</button> 
   
 </form>
+
+
+<!-- <label>Top Rated:</label>
+
+<div class="radio">
+  <label><input type="radio" name="isTopRated"  value="true" checked > Yes</label>
+</div>
+<div class="radio">
+  <label><input type="radio" name="isTopRated"  value="false"> No</label>
+</div>
+
+<div>
+  <label>Authors *Required</label>
+  <select class="custom-select custom-select-sm" name="authors"  multiple formControlName="authors">
+    <option value="Greta Richardson">Greta Richardson</option>
+    <option value="Deana Bruce">Deana Bruce</option>
+    <option value="Patsy Bright">Patsy Bright</option>
+  </select>
+</div> -->
