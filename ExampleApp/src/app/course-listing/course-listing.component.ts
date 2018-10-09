@@ -3,7 +3,7 @@ import { Router } from "@angular/router";
 import { CoursesService } from "./../services/courses.service";
 import { Course } from "../course";
 import { Observable, fromEvent } from 'rxjs';
-import { debounceTime, takeUntil, map, takeWhile, filter } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { AppState } from '../interfaces/app-state';
 import * as courseActions from '../ngrx/actions/course.actions';

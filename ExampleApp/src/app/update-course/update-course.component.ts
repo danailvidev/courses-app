@@ -3,10 +3,11 @@ import { Location } from '@angular/common';
 import { CoursesService } from './../services/courses.service';
 import { Router } from '@angular/router';
 import { Course } from '../course';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import * as courseActions from './../ngrx/actions/course.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from '../interfaces/app-state';
+import { CustomValidators } from '../custom-validators';
 
 @Component({
     selector: 'app-update-course',
@@ -33,8 +34,14 @@ export class UpdateCourseComponent implements OnInit {
         }
         this.editForm = this.formBuilder.group({
             id: [],
-            name: ['', Validators.required],
-            description: ['', Validators.required],
+            'name': new FormControl('', Validators.compose([
+                Validators.required,
+                CustomValidators.maxLength
+            ])),
+            'description': new FormControl('', Validators.compose([
+                Validators.required,
+                CustomValidators.maxLengthTextArea
+            ])),
             date: ['', Validators.required],
             length: ['', Validators.required],
             isTopRated: ['', Validators.required],
@@ -45,18 +52,8 @@ export class UpdateCourseComponent implements OnInit {
         });
     }
 
-    onSubmit(value) {
-        // this.courseService
-        //     .updateCourse(this.editForm.value)
-        //     .pipe(first())
-        //     .subscribe(data => {
-        //         this.router.navigate(['courses']);
-        //     }, error => {
-        //         alert(error);
-        //     });
-        console.log(this.editForm.value);
+    onSubmit() {
         this.store.dispatch(new courseActions.UpdateCourseAction(this.editForm.value));
-        
     }
 
     back() {

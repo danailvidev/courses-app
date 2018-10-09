@@ -15,7 +15,7 @@
 
   <label>Duration: </label>
   <show-errors [control]="addForm.controls.length" [ngClass]="{'show' : (addForm.get('length').dirty || addForm.get('length').touched) && addForm.controls.length.errors}"></show-errors>
-  <input class="form-control" type="number" name="length" id="length" placeholder="Duration in minutes" formControlName="length">
+  <input class="form-control" type="number" name="length" id="length" placeholder="Duration in minutes" formControlName="length" maxlength="5">
 
   <label>Top Rated:</label>
 

@@ -31,7 +31,8 @@ export class ShowErrorsComponent {
     'digit': (params) => params.message,
     'uppercase': (params) => params.message,
     'lowercase': (params) => params.message,
-    'minLength': (params) => params.message
+    'minLength': (params) => params.message,
+    'maxLength': (params) => params.message
   };
 
   @Input()

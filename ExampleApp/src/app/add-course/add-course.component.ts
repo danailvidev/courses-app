@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { CoursesService } from './../services/courses.service';
 import { Router } from '@angular/router';
 import * as courseActions from './../ngrx/actions/course.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from '../interfaces/app-state';
 import { Course } from '../course';
+import { CustomValidators } from '../custom-validators';
 
 @Component({
     selector: 'app-add-course',
@@ -16,7 +16,6 @@ export class AddCourseComponent implements OnInit {
     constructor(
         private fb: FormBuilder,
         private router: Router,
-        private courseService: CoursesService,
         private store: Store<AppState>
     ) { }
 
@@ -26,8 +25,14 @@ export class AddCourseComponent implements OnInit {
 
     ngOnInit() {
         this.addForm = this.fb.group({
-            'name': new FormControl('', Validators.required),
-            'description': new FormControl('', Validators.required),
+            'name': new FormControl('', Validators.compose([
+                Validators.required,
+                CustomValidators.maxLength
+            ])),
+            'description': new FormControl('', Validators.compose([
+                Validators.required,
+                CustomValidators.maxLengthTextArea
+            ])),
             'date': new FormControl('', Validators.required),
             'length': new FormControl(Validators.required),
             'authors': new FormControl('', Validators.required)
