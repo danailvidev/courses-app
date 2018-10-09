@@ -3,6 +3,9 @@ import { AuthenticationService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoaderService } from '../loader/loader.service';
+import { Store } from '@ngrx/store';
+import { AppState } from '../interfaces/app-state';
+import * as authActions from './../ngrx/actions/auth.actions';
 
 @Component({
     selector: 'app-login',
@@ -19,7 +22,8 @@ export class LoginComponent implements OnInit {
         private auth: AuthenticationService,
         private router: Router,
         private fb: FormBuilder,
-        private loaderSvc: LoaderService) { }
+        private loaderSvc: LoaderService,
+        private store: Store<AppState>) { }
 
     ngOnInit() {
         this.initLoginForm();
@@ -35,13 +39,15 @@ export class LoginComponent implements OnInit {
     }
 
     signIn(value) {
-        this.auth.login(value).subscribe((res: any) => {
-            this.errorMessage = '';
-            this.router.navigate(['/courses']);
-        }, e => {
-            this.loaderSvc.showLoader$.next(false);
-            this.errorMessage = e.statusText;
-        });
+        // this.auth.login(value).subscribe((res: any) => {
+        //     this.errorMessage = '';
+        //     this.router.navigate(['/courses']);
+        // }, e => {
+        //     this.loaderSvc.showLoader$.next(false);
+        //     this.errorMessage = e.statusText;
+        // });
+        this.store.dispatch(new authActions.LoginUserAction(value));
+        this.loaderSvc.showLoader$.next(false);
     }
 
     private initLoginForm() {

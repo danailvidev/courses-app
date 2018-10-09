@@ -32,15 +32,15 @@ export class AuthenticationService {
             }));
     }
 
-    logout(): boolean {
+    logout(): Observable<any> {
         try {
             localStorage.removeItem(this.TOKEN_KEY);
             localStorage.removeItem(this.DATA_KEY);
             this.router.navigate(['/login']);
-            return true;
+            return of(true);
         } catch (err) {
             console.error('server error:', err);
-            return false;
+            return of(false);
         }
     }
 
