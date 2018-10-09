@@ -37,7 +37,7 @@ export class CourseListingComponent implements OnInit, AfterViewInit {
             )
             .subscribe((res: any) => {
                 this.textFragment = res.target.value;
-                if (this.textFragment && (this.textFragment.length >= 3 || this.textFragment.length == 0)) {
+                if (this.textFragment.length >= 3 || this.textFragment.length == 0) {
                     this.getCourses();
                 }
             });
@@ -66,7 +66,7 @@ export class CourseListingComponent implements OnInit, AfterViewInit {
             textFragment: this.textFragment,
             sort: this.pageSort
         };
-        this.store.dispatch(new courseActions.LoadCoursesAction());
+        this.store.dispatch(new courseActions.LoadCoursesAction(params));
     }
 
     sortCourses() {

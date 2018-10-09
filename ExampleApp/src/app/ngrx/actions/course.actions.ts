@@ -10,7 +10,7 @@ export const DELETE_COURSE_SUCCESS = 'DELETE_COURSE_SUCCESS;';
 
 export class LoadCoursesAction {
     readonly type = LOAD_COURSES;
-    constructor() { }
+    constructor(public payload?: any) { }
 }
 
 export class LoadCoursesSuccessAction {

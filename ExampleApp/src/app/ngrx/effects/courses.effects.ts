@@ -19,7 +19,7 @@ export class CourseEffects {
     @Effect() loadCourses$ = this.actions$
         .ofType(courseActions.LOAD_COURSES)
         .pipe(
-            switchMap(() => this.coursesSvc.getCourses()),
+            switchMap((action: any) => this.coursesSvc.getCourses(action.payload)),
             map(courses => (new courseActions.LoadCoursesSuccessAction(courses)))
         );
 
