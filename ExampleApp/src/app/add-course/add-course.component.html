@@ -2,40 +2,43 @@
 
   <label>Title: </label>
   <show-errors [control]="addForm.controls.name" [ngClass]="{'show' : (addForm.get('name').dirty || addForm.get('name').touched) && addForm.controls.name.errors}"></show-errors>
-  <input class="form-control" type="text" name="name" id="name" placeholder="Title"   formControlName="name">
+  <input class="form-control" type="text" name="name" id="name" placeholder="Title" formControlName="name">
 
 
   <label>Description: </label>
   <show-errors [control]="addForm.controls.description" [ngClass]="{'show' : (addForm.get('description').dirty || addForm.get('description').touched) && addForm.controls.description.errors}"></show-errors>
-  <textarea class="form-control" name="description" id="description" placeholder="Description"  formControlName="description"></textarea>
+  <textarea class="form-control" name="description" id="description" placeholder="Description" formControlName="description"></textarea>
 
   <label>Date: </label>
   <show-errors [control]="addForm.controls.date" [ngClass]="{'show' : (addForm.get('date').dirty || addForm.get('date').touched) && addForm.controls.date.errors}"></show-errors>
-  <input class="form-control" type="text" name="date" id="date" placeholder="mm/dd/yyyy"   formControlName="date">
+  <input class="form-control" type="text" name="date" id="date" placeholder="mm/dd/yyyy" formControlName="date">
 
   <label>Duration: </label>
   <show-errors [control]="addForm.controls.length" [ngClass]="{'show' : (addForm.get('length').dirty || addForm.get('length').touched) && addForm.controls.length.errors}"></show-errors>
-  <input class="form-control" type="number" name="length" id="length" placeholder="Duration in minutes" formControlName="length" maxlength="5">
+  <input class="form-control" type="number" name="length" id="length" placeholder="Duration in minutes" formControlName="length"
+    maxlength="5">
 
-  <label>Top Rated:</label>
+  <div style="margin-top:14px">
+    <p>
+      Top Rated:
+    </p>
+    <label class="switch">
+      <input type="checkbox" class="default" name="isTopRated" formControlName="isTopRated">
+      <span class="slider"></span>
+    </label>
 
-  <div class="radio">
-    <label><input type="radio" name="isTopRated"  value="true" checked > Yes</label>
-  </div>
-  <div class="radio">
-    <label><input type="radio" name="isTopRated"  value="false"> No</label>
   </div>
 
   <div>
     <label>Authors *Required</label>
-    <select class="custom-select custom-select-sm" name="authors"  multiple formControlName="authors">
+    <select class="custom-select custom-select-sm" name="authors" multiple formControlName="authors">
       <option value="Greta Richardson">Greta Richardson</option>
       <option value="Deana Bruce">Deana Bruce</option>
       <option value="Patsy Bright">Patsy Bright</option>
     </select>
   </div>
 
-
+  <button type="button" class="btn btn-warn mr-2" (click)="back()">Back</button>
   <button type="submit" class="btn btn-success" [disabled]="!addForm.valid">CREATE</button>
 
 </form>

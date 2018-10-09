@@ -44,7 +44,7 @@ export class UpdateCourseComponent implements OnInit {
             ])),
             date: ['', Validators.required],
             length: ['', Validators.required],
-            isTopRated: ['', Validators.required],
+            isTopRated: [''],
             authors: ['']
         });
         this.courseService.getCourseById(+courseId).subscribe(data => {
@@ -53,6 +53,7 @@ export class UpdateCourseComponent implements OnInit {
     }
 
     onSubmit() {
+        console.log(this.editForm.value);
         this.store.dispatch(new courseActions.UpdateCourseAction(this.editForm.value));
     }
 

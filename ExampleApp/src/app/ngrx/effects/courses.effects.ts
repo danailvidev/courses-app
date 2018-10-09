@@ -27,7 +27,8 @@ export class CourseEffects {
         .ofType(courseActions.CREATE_COURSE)
         .pipe(
             switchMap((action: courseActions.CreateCourseAction) => this.coursesSvc.createCourse(action.payload)),
-            map(courses => (new courseActions.CreateCourseSuccessAction(courses)))
+            map(courses => (new courseActions.CreateCourseSuccessAction(courses))),
+            tap( () => this.router.navigate(['/courses']))
         );
 
     @Effect() updateCourse$ = this.actions$

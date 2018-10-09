@@ -1,47 +1,45 @@
-
 <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
 
-   <label>Title: *Required</label>
-   <show-errors [control]="editForm.controls.name" [ngClass]="{'show' : (editForm.get('name').dirty || editForm.get('name').touched) && editForm.controls.name.errors}"></show-errors>
-   <input class="form-control" type="text" name="name" id="title" placeholder="Title" formControlName ="name">
+  <label>Title: *Required</label>
+  <show-errors [control]="editForm.controls.name" [ngClass]="{'show' : (editForm.get('name').dirty || editForm.get('name').touched) && editForm.controls.name.errors}"></show-errors>
+  <input class="form-control" type="text" name="name" id="title" placeholder="Title" formControlName="name">
 
-   <label>Description: *Required</label>
-   <show-errors [control]="editForm.controls.description" [ngClass]="{'show' : (editForm.get('description').dirty || editForm.get('description').touched) && editForm.controls.description.errors}"></show-errors>
-   <textarea class="form-control" name="description" id="description" placeholder="Description" formControlName ="description"></textarea>
-
-
-   <label>Date: *Required</label>
-   <input class="form-control" type="text" name="date" id="creation_date" placeholder="mm/dd/yyyy" formControlName="date">
-
-   <label>Duration: *Required</label>
-   <input class="form-control" type="text" name="length" id="duration" placeholder="Duration in minutes" formControlName="length">
-
-  <label>Top Rated: *Required</label>
-
-    <div class="radio">
-      <label>
-        <input type="radio" name="isTopRated" formControlName="isTopRated" value='true' checked> Yes
-      </label>
-    </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="isTopRated" formControlName="isTopRated" value='false'> No
-      </label>
-    </div>
-
-    <div>
-        <label>Authors</label>
-        <select class="custom-select custom-select-sm" name="authors"  multiple formControlName="authors">
-          <option value="Greta Richardson">Greta Richardson</option>
-          <option value="Deana Bruce">Deana Bruce</option>
-          <option value="Patsy Bright">Patsy Bright</option>
-        </select>
-      </div>
+  <label>Description: *Required</label>
+  <show-errors [control]="editForm.controls.description" [ngClass]="{'show' : (editForm.get('description').dirty || editForm.get('description').touched) && editForm.controls.description.errors}"></show-errors>
+  <textarea class="form-control" name="description" id="description" placeholder="Description" formControlName="description"></textarea>
 
 
-    <button type="button" class="btn btn-warn mr-2" (click)="back()">Back</button> 
-  <button type="submit" class="btn btn-success">UPDATE</button> 
+  <label>Date: *Required</label>
+  <input class="form-control" type="text" name="date" id="creation_date" placeholder="mm/dd/yyyy" formControlName="date">
+
+  <label>Duration: *Required</label>
+  <input class="form-control" type="text" name="length" id="duration" placeholder="Duration in minutes" formControlName="length">
+
   
+  <div style="margin-top:14px">
+    <p>
+      Top Rated:
+    </p>
+    <label class="switch">
+      <input type="checkbox" class="default" name="isTopRated" formControlName="isTopRated">
+      <span class="slider"></span>
+    </label>
+
+  </div>
+
+  <div>
+    <label>Authors</label>
+    <select class="custom-select custom-select-sm" name="authors" multiple formControlName="authors">
+      <option value="Greta Richardson">Greta Richardson</option>
+      <option value="Deana Bruce">Deana Bruce</option>
+      <option value="Patsy Bright">Patsy Bright</option>
+    </select>
+  </div>
+
+
+  <button type="button" class="btn btn-warn mr-2" (click)="back()">Back</button>
+  <button type="submit" class="btn btn-success">UPDATE</button>
+
 </form>
 
 

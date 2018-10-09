@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as courseActions from './../ngrx/actions/course.actions';
@@ -16,7 +17,8 @@ export class AddCourseComponent implements OnInit {
     constructor(
         private fb: FormBuilder,
         private router: Router,
-        private store: Store<AppState>
+        private store: Store<AppState>,
+        private location: Location
     ) { }
 
     course: Course = new Course();
@@ -35,12 +37,16 @@ export class AddCourseComponent implements OnInit {
             ])),
             'date': new FormControl('', Validators.required),
             'length': new FormControl(Validators.required),
-            'authors': new FormControl('', Validators.required)
+            'authors': new FormControl('', Validators.required),
+            'isTopRated': new FormControl('', ),
         });
     }
 
     onSubmit(value) {
         this.store.dispatch(new courseActions.CreateCourseAction(value));
-        this.router.navigate(['/courses']);
+    }
+
+    back() {
+        this.location.back();
     }
 }
