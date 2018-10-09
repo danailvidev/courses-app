@@ -16,7 +16,7 @@
   <div borderColor [time]="course.date" class="course-item" [ngClass]="{'top-rated': isTopRated}">
     <div class="course-details">
       <p>
-        <a href="">{{course?.name | uppercase}} </a> <span *ngIf="isTopRated"> | <i class="fa fa-star"></i></span>
+        <a href="">{{course?.name | uppercase}} </a> <span *ngIf="course.isTopRated">  <i class="fa fa-star"></i></span>
       </p>
       <p class="course-time">{{course?.length | duration}} <span>{{course?.date}}</span></p>
       <button class="btn btn-sm btn-outline-secondary" (click)="updateCourse(course)">Edit</button>
